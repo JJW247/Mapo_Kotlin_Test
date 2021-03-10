@@ -1,0 +1,47 @@
+{
+    "version": "2.0.0",
+    "runner": "terminal",
+    "type": "shell",
+    "echoCommand": true,
+    "presentation" : { "reveal": "always" },
+    "tasks": [
+        // Compile
+        {
+            "label": "saveNcompile",
+            "command": "kotlinc",
+            "args": [
+                "${file}",
+                "-include-runtime",
+                "-d",
+                "${fileDirname}/${fileBasenameNoExtension}.jar"
+            ],
+            "group": "build",
+            // Error details when compile
+            // Reference : https://code.visualstudio.com/docs/editor/tasks#_defining-a-problem-matcher
+            "problemMatcher": {
+                "fileLocation": [
+                    "relative",
+                    "${workspaceRoot}"
+                ],
+                "pattern": {
+                    // The regular expression. 
+                    "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+                    "file": 1,
+                    "line": 2,
+                    "column": 3,
+                    "severity": 4,
+                    "message": 5
+                }
+            }
+        },
+        // Execute Bianary
+        {
+            "label": "execute",
+            "command": "java",
+            "group": "test",
+            "args": [
+               "-jar", "${fileDirname}/${fileBasenameNoExtension}.jar"
+            ]
+        }
+    ]
+}
