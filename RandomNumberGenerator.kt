@@ -1,3 +1,3 @@
 fun main(args:Array<String>){
-    println("RNG")
+    println("RNG_TEST")
 }
