@@ -16,7 +16,7 @@
                 "${fileDirname}/${fileBasenameNoExtension}.jar"
             ],
             "group": "build",
-            // Error details when compile
+            // Error when compile
             // Reference : https://code.visualstudio.com/docs/editor/tasks#_defining-a-problem-matcher
             "problemMatcher": {
                 "fileLocation": [
